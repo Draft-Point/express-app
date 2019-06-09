@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
 
   }
 
-  else res.status(400).json({ msg: 'Auth credentials not detected'})
+  else res.status(400).send("Auth credentials not detected")
 
 })
 

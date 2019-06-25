@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -13,17 +12,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use('/default', express.static(path.join(__dirname, 'public')))
 
 // Code for Draft Point
 
@@ -32,6 +21,8 @@ app.get('/', function (req, res) {
   const okta = req.headers['x-mlbam-okta']
   const vid = req.headers['x-mlbam-vid']
   const cis = req.headers['x-mlbam-cis']
+  
+  console.log('asdfjkl;')
 
   if (okta && vid && cis) {
 
@@ -41,7 +32,7 @@ app.get('/', function (req, res) {
 
   }
 
-  else res.status(400).send("Auth credentials not detected")
+  else res.redirect('/default')
 
 })
 

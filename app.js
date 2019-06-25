@@ -22,8 +22,6 @@ app.get('/', function (req, res) {
   const vid = req.headers['x-mlbam-vid']
   const cis = req.headers['x-mlbam-cis']
   
-  console.log('asdfjkl;')
-
   if (okta && vid && cis) {
 
     const firebaseUrl = 'https://draft-point.firebaseapp.com/?x-mlbam-okta=' + okta + '&x-mlbam-vid=' + vid + '&x-mlbam-cis=' + cis

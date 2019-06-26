@@ -18,18 +18,18 @@ app.use('/default', express.static(path.join(__dirname, 'public')))
 
 app.get('/', function (req, res) {
 
-  const okta = req.headers['x-mlbam-okta']
-  const vid = req.headers['x-mlbam-vid']
+  const okta = req.headers['x-mlbam-okta'];
+  const vid = req.headers['x-mlbam-vid'];
   
   if (okta) {
 
-    const firebaseUrl = 'https://draft-point.firebaseapp.com/?x-mlbam-okta=' + okta + '&x-mlbam-vid=' + vid
+    const firebaseUrl = 'https://draft-point.firebaseapp.com/?x-mlbam-okta=' + okta + '&x-mlbam-vid=' + vid;
 
-    res.redirect(firebaseUrl)
+    res.redirect(firebaseUrl);
 
   }
 
-  else res.redirect('/default')
+  else res.redirect('/default');
 
 })
 

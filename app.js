@@ -20,10 +20,11 @@ app.get('/', function (req, res) {
 
   const okta = req.headers['x-mlbam-okta'];
   const vid = req.headers['x-mlbam-vid'];
+  const cis = req.headers['x-mlbam-cis'];
   
   if (okta) {
 
-    const firebaseUrl = 'https://draft-point.firebaseapp.com/?x-mlbam-okta=' + okta + '&x-mlbam-vid=' + vid;
+    const firebaseUrl = 'https://draft-point.firebaseapp.com/?x-mlbam-okta=' + okta + '&x-mlbam-vid=' + vid + '&x-mlbam-cis=' + cis;
 
     res.redirect(firebaseUrl);
 
